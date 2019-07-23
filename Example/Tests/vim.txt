@@ -1,0 +1,139 @@
+introduce to vim:
+	level 1: 
+	  h - Move cursor left 左移
+	  j - Move cursor down 下移
+	  k - Move cursor up 上移
+	  l - Move cursor right 右移
+	 :q - Close file 关闭文件
+	:q! - Close file, don't save changes 关闭文件且不保存
+         :w - Save changes 保存
+	:wq - Close file, save changes 关闭文件并保存
+ 	  x - Delete character at cursor 删除光标所在的字符
+ 	  X - Delete character before cursor 删除光标所在的前一个字符
+	  i - Insert at cursor 在光标处插入
+	  I - Insert at beginning of line 在光标所在行的行首插入
+	  a - Append at cursor 在光标后插入
+	  A - Append at end of line 在光标所在行的行尾插入
+
+	level 2:
+	 dw - Delete next world 删除光标后的一个词
+    2dw/d2w - Delete next two world(2 can be replace with any other number) 删除光标后的两个词
+	  D - Delete from cusor to end of line 删除从光标到行尾的内容
+	  w - Go to next word 跳转到下一个词
+	  b - Go to previous word 跳转到前一个词
+	  $ - Go to end of text 跳转到一行文本的末尾（可能跨越多行）
+	  ^ - Go to beginning of text on current line 跳转到一行文本的开始（空白字符不计）
+	  0 - Go to beginning of current line 跳转到一行文本的行首
+         2w - Go two words backward(2 can be replace with any other number) 从光标处向后移动两个词
+         2b - Go two words forward(2 can be replace with any other number) 从光标处向前移动两个词
+	 2e - Go to end of 2 word ahead(2 can be repalce with any other number) 从光标处向后移动两个词且光标定格在词的末尾
+         dd - Delete entire line  删除光标所在的整行
+	2dd - Delete two lines 删除从光标处开始的两行
+	  u - Undo last change  撤销上一个操作
+	  U - Undo changes on entire line  撤销光标所在行的所有操作
+   ctrl + r - Redo changes 重新执行操作
+         d$ - Delete to end of line  从光标处删到行尾
+	 d0 - Delete to beginning of line 从光标处删到行首
+	
+	level 3:
+   p(lower) - Paste after cursor 在光标后粘贴
+   P(upper) - Paste before cursor 在光标前粘贴
+	  r - Repalce character under cursor 替换光标所指的字符(输入r后继续输入字符以替换)
+	 cw - Change world 更新词（光标移动到词的开始，按下cw会删除这个词并切换到编辑模式）
+       c$/C - Change to end of line  更新从光标开始到行尾的内容
+        c2w - Change two world 更新从光标开始的两个词
+         
+
+	level 4:
+    50G/:50 - Go to line 50 跳转到50行
+          G - Go to last line in file 跳转到文件最后一行
+         gg - Go to first line in file 跳转到文件第一行
+       /key - Search for 'key' 在光标以下的文件中搜索
+          n - Go to next search result 跳转到下一个搜索结果
+	  N - Go to previous search result 跳转到上一个搜索结果
+       ?key - Search backwords for 'key' 在光标以上的文件中搜索结果
+   ctrl + o - Jump to previous location
+   ctrl + i - Jump to next location
+          % - Go to matching parentheses or brackets 跳转到匹配括号或方括号
+:%s/bad/good- Replace bad with good in current line 在光标所在行用good替换bad
+:%s/hi/bye/g- Replace hi with bye with entire file 用bye替换文件中出现的hi
+ :%s/x/y/gc - Replace x with y in entire file, prompt for changes 用y替换文件中出现的x(带提示)
+ 
+	level 5:
+       :!ls - Run shell command ls 执行shell ls 命令
+	  v - Open visual mode 打开视觉模式
+         vw - Visual select word 在视觉模式下选择词
+        vwd - Visual select word, then delete 
+ :w play.rb - Save current file as 'play.rb'
+  :r hat.rb - Read in file hat.rb
+
+	level 6:
+   o(lower) - Open new line below 在光标下开启新行
+   O(upper) - Open new lien above 在光标上开启新行
+          e - Get to end of word
+	 2e - Get to end of next word
+          b - Get to beginning of word
+         2b - Get to beginning of previous word
+          R - Enter replace mode
+	 yw - Yank word 复制词
+        vwy - Visual select word, then yank
+         y$ - Yank to end of current line
+     set ic - Change search settings to ignore case 
+   set noic - Change search settings to use case 
+   
+	level 7:
+  :e sun.rb - Open file 'sun.rb'
+    :help w - Get help for 'w' command
+    :help e - Get help for 'e' command
+
+
+
+
+	Arglist:
+          :arg - show the file in your current arglist
+	  :argdo - to run a command on your arglist
+	  :argadd/:arga - to add files to your arglist
+	  :argdelete/:argd - to remove files to your arglist
+          :argdo update - to save all changes to your arglist 
+          :argdo undo - to undo changes to your arglist
+
+         Example:
+	  :arg -- View arglist
+          :argdo %s/bag/good/g -- Replace bad with good in arglist
+          :arga some.txt -- Add some.txt to arg;ost
+	  :argd * -- Clear arglist
+	  :argdo update -- Save files in arglist
+	  :argdo undo -- Undo changes to arglist
+
+
+
+	ge - End of previous word
+         w - Next word
+	 e - End of word
+	 b - beginning of word
+ 
+	 } - Next paragraph 下一段
+         ( - Previous sentence
+         ) - Next sentence
+
+
+        yw - Yank word(so yank is copy?)
+	yy - Yank line 
+	 p - Paste after cursor
+	 P - Paste before cursor
+        :reg/:register - show yank register
+	"0p - Paste from 0 register
+	"ap - Paste from a register
+  	"ayw - Yank a word and save to register that names 'a'
+
+
+	多行注释
+	1 按下ctrl + v 
+	2 方向键选择需要注释的行
+	3 输入大写字母I，再输入#
+	4 按两次ESC
+
+	取消多行注释
+	1 按下ctrl + v
+	2 选择要取消注释的行
+	3 按下d

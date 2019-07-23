@@ -1,0 +1,22 @@
+PODS:
+  - SqliteObjC (1.0.0):
+    - SqliteObjC/Core (= 1.0.0)
+    - SqliteObjC/Impls (= 1.0.0)
+    - SqliteObjC/Private (= 1.0.0)
+  - SqliteObjC/Core (1.0.0)
+  - SqliteObjC/Impls (1.0.0)
+  - SqliteObjC/Private (1.0.0)
+
+DEPENDENCIES:
+  - SqliteObjC (from `../`)
+
+EXTERNAL SOURCES:
+  SqliteObjC:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  SqliteObjC: e7cd2d8e7690c52bd6e780e016fe8987136ccefb
+
+PODFILE CHECKSUM: 42550f6cdec690b8c736d4a4873b62db2167540f
+
+COCOAPODS: 1.7.1

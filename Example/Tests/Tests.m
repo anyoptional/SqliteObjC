@@ -599,7 +599,7 @@
 
 - (void)testOpenZeroLengthPath
 {
-    id<DataSource> ds = SqliteDataSource.new;
+    id<DataSource> ds = [SqliteDataSource dataSourceWithPath:@""];
     id<Connection> db = [ds getConnection];
     XCTAssert([db open], @"open failed");
     XCTAssert([[db createStatement] executeUpdate:@"create table foo (bar text)"], @"create failed");
@@ -613,6 +613,10 @@
     NSString *retrievedValue = [rs stringForColumnIndex:0];
     [rs close];
     XCTAssert([value compare:retrievedValue] == NSOrderedSame, @"values didn't match");
+    
+    XCTAssertEqual(db, [ds getConnection]);
+    [db close];
+    XCTAssertNotEqual(db, [ds getConnection]);
 }
 
 - (void)testOpenTwice

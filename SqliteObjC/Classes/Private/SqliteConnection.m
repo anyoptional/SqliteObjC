@@ -79,6 +79,7 @@ BOOL SQLiteConnectionIsClosed(id<Connection> conn) {
         } while (retry);
         _database = NULL;
     }
+    [_delegate sqliteConnectionDidClose:self];
     dispatch_semaphore_signal(_lock);
     return YES;
 }

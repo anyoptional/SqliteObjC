@@ -20,7 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
  File path of database file. Setting this property will affect
  next result from getConnection method call.
  */
-@property (nullable, nonatomic, copy) NSString *path;
+@property (nonatomic, copy) NSString *path;
 
 /**
  Creates a DataSource with the specified database file path.

@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 #import "PreparedStatement.h"
+#import "DatabaseMetaData.h"
 #import "Statement.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -39,6 +40,12 @@ NS_ASSUME_NONNULL_BEGIN
  @return A cached PreparedStatement object, if any, or a new default one.
  */
 - (nullable id<PreparedStatement>)prepareStatement:(NSString *)sql;
+
+/**
+ Retrieves a `DatabaseMetaData` object that contains metadata about the
+ database to which this `Connection` object represents a connection.
+ */
+@property (nonatomic, readonly, strong) id<DatabaseMetaData> metaData;
 
 /**
  Opening a new database connection.

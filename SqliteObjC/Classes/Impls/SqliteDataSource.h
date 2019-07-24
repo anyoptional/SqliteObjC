@@ -22,14 +22,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 @property (nonatomic, copy) NSString *path;
 
-/**
- Creates a DataSource with the specified database file path.
- 
- @param path File path of database file.
- @return The DataSouce object that produce connections.
- */
-+ (instancetype)dataSourceWithPath:(NSString *)path;
-
 @end
 
 NS_ASSUME_NONNULL_END

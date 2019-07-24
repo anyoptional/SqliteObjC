@@ -50,7 +50,7 @@
     [pStmt close];
     
     // 4 查询
-    pStmt = [connection prepareStatement:@"select * from goods_t where name=?"];
+    pStmt = [connection prepareStatement:@"select price from goods_t where name=?"];
     [pStmt setString:@"Archer" atIndex:0];
     // - 执行executeQuery获取ResultSet
     id<ResultSet> rs = [pStmt executeQuery];
@@ -58,6 +58,7 @@
     // - 获取ResultSet元数据
     id<ResultSetMetaData> rsmd = rs.metaData;
     
+    NSLog(@"column count = %ld", rsmd.columnCount);
     for (NSInteger i = 0; i < rsmd.columnCount; ++i) {
         NSLog(@"column name = %@", [rsmd columnNameForIndex:i]);
     }

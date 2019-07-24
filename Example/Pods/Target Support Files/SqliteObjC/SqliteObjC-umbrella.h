@@ -11,6 +11,7 @@
 #endif
 
 #import "Connection.h"
+#import "DatabaseMetaData.h"
 #import "DataSource.h"
 #import "PreparedStatement.h"
 #import "ResultSet.h"

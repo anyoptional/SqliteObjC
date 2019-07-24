@@ -105,6 +105,24 @@
     [_connection commit];
 }
 
+- (void)testDatabaseMetaData {
+    
+    id<DatabaseMetaData> meta = _connection.metaData;
+    NSString *dir = NSHomeDirectory();
+    NSString *path = [dir stringByAppendingPathComponent:@"/Documents/test.db"];
+    XCTAssertTrue([path isEqualToString:meta.filePath]);
+    
+    XCTAssertTrue([meta tableExists:@"t3"]);
+    XCTAssertTrue([meta tableExists:@"test"]);
+    XCTAssertFalse([meta tableExists:@"no_such_table"]);
+    
+    NSArray *fields = [meta columnsInTable:@"test"];
+    XCTAssertTrue([fields containsObject:@"a"]);
+    XCTAssertTrue([fields containsObject:@"d"]);
+    XCTAssertFalse([fields containsObject:@"f"]);
+    XCTAssertFalse([fields containsObject:@"A"]);
+}
+
 - (void)tearDown
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
@@ -154,7 +172,7 @@
     id<Statement> stmt = [_connection createStatement];
     id<ResultSet> rs = [stmt executeQuery:@"PRAGMA table_info(my_table)"];
     XCTAssertTrue([rs next]);
-    NSLog(@"---->> %@", [rs stringForColumnIndex:3]);
+    NSLog(@"---->> %@", [rs stringForColumn:@"name"]);
 }
 
 - (void)testVacuum

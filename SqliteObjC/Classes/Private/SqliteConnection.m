@@ -6,6 +6,7 @@
 //
 
 #import "SqlitePreparedStatement.h"
+#import "SqliteDatabaseMetaData.h"
 #import "SqliteConnection.h"
 #import "SqliteStatement.h"
 #import <sqlite3.h>
@@ -25,6 +26,8 @@ BOOL SQLiteConnectionIsClosed(id<Connection> conn) {
 
 @implementation SqliteConnection
 
+@synthesize metaData = _metaData;
+
 - (instancetype)initWithPath:(NSString *)path {
     if (self = [super init]) {
         _database = NULL;
@@ -37,6 +40,15 @@ BOOL SQLiteConnectionIsClosed(id<Connection> conn) {
 
 - (void)dealloc {
     [self close];
+}
+
+- (id<DatabaseMetaData>)metaData {
+    if (!_metaData) {
+        @synchronized (self) {
+            _metaData = [[SqliteDatabaseMetaData alloc] initWithConnection:self];
+        }
+    }
+    return _metaData;
 }
 
 - (BOOL)open {

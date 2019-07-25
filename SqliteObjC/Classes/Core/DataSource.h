@@ -17,24 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 @protocol DataSource <NSObject>
 
 /**
- Creates a DataSource with the specified database file path.
-
- @param path File path of database file.
- @return The DataSouce object that produce connections.
- */
-- (instancetype)initWithPath:(NSString *)path;
-
-/**
- Creates a DataSource with the specified database file path.
- 
- @param path File path of database file.
- @return The DataSouce object that produce connections.
- */
-+ (instancetype)dataSourceWithPath:(NSString *)path;
-
-/**
  File path of database file. Setting this property will affect
- next result from getConnection method call.
+ next result from getConnection call.
  */
 @property (nonatomic, copy) NSString *path;
 

@@ -17,10 +17,20 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SqliteDataSource : NSObject <DataSource>
 
 /**
- File path of database file. Setting this property will affect
- next result from getConnection method call.
+ Creates a DataSource with the specified database file path.
+ 
+ @param path File path of database file.
+ @return The DataSouce object that produce connections.
  */
-@property (nonatomic, copy) NSString *path;
+- (instancetype)initWithPath:(NSString *)path;
+
+/**
+ Creates a DataSource with the specified database file path.
+ 
+ @param path File path of database file.
+ @return The DataSouce object that produce connections.
+ */
++ (instancetype)dataSourceWithPath:(NSString *)path;
 
 @end
 

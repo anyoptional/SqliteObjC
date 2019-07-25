@@ -50,7 +50,7 @@
     [pStmt close];
     
     // 4 查询
-    pStmt = [connection prepareStatement:@"select price from goods_t where name=?"];
+    pStmt = [connection prepareStatement:@"select * from goods_t where name=?"];
     [pStmt setString:@"Archer" atIndex:0];
     // - 执行executeQuery获取ResultSet
     id<ResultSet> rs = [pStmt executeQuery];

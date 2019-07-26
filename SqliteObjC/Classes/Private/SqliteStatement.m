@@ -36,7 +36,7 @@
 
 - (BOOL)isClosed {
     dispatch_semaphore_wait(_connection.lock, DISPATCH_TIME_FOREVER);
-    BOOL closed = _pStmt = NULL;
+    BOOL closed = _pStmt == NULL;
     dispatch_semaphore_signal(_connection.lock);
     return closed;
 }
